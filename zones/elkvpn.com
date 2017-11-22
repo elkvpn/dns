@@ -17,5 +17,8 @@ ns2     A       54.197.214.82 ; ec2 - ns2
 $ttl 86400
 
 ; www
-www      600 DYNA geoip!prod_www
-www-dc01 600 DYNA geoip!prod_www/dc-01
+
+
+; fr vpn's
+fr   600 DYNA geoip!vpn_fr
+fr01 600 DYNA geoip!vpn_fr/fr-01
