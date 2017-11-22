@@ -1,0 +1,26 @@
+plugins => { geoip => {
+  maps => {
+    my_prod_map => {
+      geoip2_db => GeoLite2-City.mmdb,
+      datacenters => [dc-03, dc-02, dc-01],
+      map => {
+          EU => {
+              DE => [dc-03, dc-01],
+              CH => [dc-01, dc-03]
+          },
+          NA => { MX => [dc-02] }
+      }
+    },
+  },
+  resources => {
+    prod_www => {
+      map => my_prod_map
+      service_types => up
+      dcmap => {
+        dc-01 => 192.0.2.1,
+        dc-02 => { lb01 => 192.0.2.2, lb02 => 192.0.2.3 },
+        dc-03 => [ 192.0.2.4, 192.0.2.5, 192.0.2.6 ]
+      }
+    }
+  }
+}}
